@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#Pengecekan User root
+if [ $(id -u) = 0 ];then
+apt-get install unattended-upgrades
+dpkg-reconfigure unattended-upgrades
+
+if apt-get upgrade -y; then
+    echo "$(date): Update Anda berhasil" >> hasil.txt
+        cat /var/log/apt/history.log >> hasil.txt
+else
+    echo "$(date): Update Anda gagal" >> hasil.txt
+        cat /var/log/apt/history.log >> hasil.txt
+fi
+elif [ $(id -u) != 0 ];then
+echo "Anda harus masuk ke user root"
+fi
+
+

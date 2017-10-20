@@ -1,0 +1,33 @@
+#!/bin/bash
+#Update dan Upgrade berdasarkan penjadwalan lalu ditampilkan apa yang sudah diupdate
+
+disk1=$(df -h)
+echo "Selamat datang di program Upgrade Otomatis"
+echo "Disk Usage sebelum Update:"
+echo "$disk1"
+sleep 3
+info=`apt list --upgradable`
+
+#Menampilkan daftar software yang upgradable
+echo "Daftar Software yang perlu diupdate"
+for x in $info;
+        do echo $x;
+done
+
+sleep 3
+if [ $(id -u) = 0 ];then #pengecekan user root
+apt-get install unattended-upgrades
+dpkg-reconfigure unattended-upgrades
+
+if apt-get upgrade -y; then
+    echo "$(date): Update Anda berhasil" >> hasil.txt
+        cat /var/log/apt/history.log >> hasil.txt
+else
+    echo "$(date): Update Anda gagal" >> hasil.txt
+        cat /var/log/apt/history.log >> hasil.txt
+fi
+echo "Disk Usage sesudah di Update : "
+echo "$disk1"
+elif [ $(id -u) != 0 ];then
+echo "Anda harus masuk ke user root"
+fi

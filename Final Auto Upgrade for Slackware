@@ -40,3 +40,5 @@ cat /var/log/packages/* >> hasil.txt
 
 echo "Disk Usage sesudah di Update : "
 echo "$disk1"
+done
+fi

@@ -15,3 +15,15 @@ for x in $info
 done
 sleep 3
 if[ $(id -u) = 0 ];then #pengeekan user root
+
+echo "Silahkan memilih repository dahulu!"
+sleep 3
+nano /etc/slackpkg/mirrors #memilih repository untuk mendownload
+echo -n "Apakah Anda yakin (y/n) ?"
+read answer
+while echo "$answer" | grep -iq "^n"
+	do
+	nano /etc/slackpkg/mirrors
+	echo -n "Apakah Anda yakin (y/n) ?"
+	read answer
+done

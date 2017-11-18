@@ -1,1 +1,8 @@
+#!/bin/bash
 
+#pengecekan disk usage sebelum di upgrade
+disk=$(df -h)
+echo "Selamat datang di program Update Upgrade Otomatis"
+echo "Disk Usage sebelum update:"
+echo "$disk"
+sleep 3

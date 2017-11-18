@@ -27,3 +27,10 @@ while echo "$answer" | grep -iq "^n"
 	echo -n "Apakah Anda yakin (y/n) ?"
 	read answer
 done
+
+while echo "$answer" | grep -iq "^y"
+	do
+slackpkg update gpg
+slackpkg update
+slackpkg install-new
+slackpkg upgrade-all

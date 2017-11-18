@@ -34,3 +34,13 @@ slackpkg update gpg
 slackpkg update
 slackpkg install-new
 slackpkg upgrade-all
+
+echo "$(date): Upgrade sukses" >> hasil.txt
+cat /var/log/packages/* >> hasil.txt
+
+echo "Disk Usage setelah update: "
+echo "$disk"
+done
+elif [ $(id -u) !=0 ]; then
+echo "Masuk user root terlebih dahulu"
+fi

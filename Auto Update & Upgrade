@@ -6,3 +6,12 @@ echo "Selamat datang di program Update Upgrade Otomatis"
 echo "Disk Usage sebelum update:"
 echo "$disk"
 sleep 3
+
+#Menampilkan daftar software yang perlu di-update
+info=`slackpkg list --upgradeable`
+echo "Daftar software yang perlu diupdate"
+for x in $info
+  do echo $x
+done
+sleep 3
+if[ $(id -u) = 0 ];then #pengeekan user root

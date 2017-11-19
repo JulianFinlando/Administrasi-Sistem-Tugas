@@ -14,7 +14,7 @@ for x in $info
   do echo $x
 done
 sleep 3
-if[ $(id -u) = 0 ];then #pengeekan user root
+if [ $(id -u) = 0 ];then #pengeekan user root
 
 echo "Silahkan memilih repository dahulu!"
 sleep 3
@@ -41,6 +41,6 @@ cat /var/log/packages/* >> hasil.txt
 echo "Disk Usage setelah update: "
 echo "$disk"
 done
-elif [ $(id -u) !=0 ]; then
+elif [ $(id -u) != 0 ]; then
 echo "Masuk user root terlebih dahulu"
 fi
